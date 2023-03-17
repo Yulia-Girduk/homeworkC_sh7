@@ -5,7 +5,7 @@
 // 1 -3,3 8 -9,9
 // 8 7,8 -7,1 9
 
-// Выводим сообщения для пользователя и возвращаем введенные данные пользователем
+// Выводим сообщения для пользователя и возвращаем введенные данные пользователем.
 int Prompt(string message)
 {
     Console.WriteLine(message);
@@ -13,7 +13,7 @@ int Prompt(string message)
     return number;
 }
 
-// Выводим массив на экран
+// Выводим массив на экран.
 void PrintArray(double[,] tableArray)
 {
     Console.WriteLine();
@@ -27,7 +27,7 @@ void PrintArray(double[,] tableArray)
     }
 }
 
-// Генерируем (задаем) массив
+// Генерируем (задаем) массив вещественных чисел.
 double[,] GenerateArray(int numberRow, int numberColumn)
 {
     double[,] tableArray = new double[numberRow, numberColumn];
