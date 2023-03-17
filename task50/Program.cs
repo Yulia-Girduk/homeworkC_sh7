@@ -9,7 +9,7 @@
 // Выводим сообщения для пользователя и возвращаем введенные данные пользователем
 int Prompt(string message)
 {
-    Console.WriteLine(message);
+    Console.Write(message);
     int number = int.Parse(Console.ReadLine());
     return number;
 }
@@ -29,10 +29,10 @@ void PrintArray(int[,] tableArray)
 }
 
 // Генерируем (задаем) массив
-int[,] GenerateArray(int numberRow, int numberColumn, int numberStart, int numberEnd)
+int[,] GenerateArray(int numberRows, int numberColumns, int numberStart, int numberEnd)
 {
     Random random = new Random();
-    int[,] tableArray = new int[numberRow, numberColumn];
+    int[,] tableArray = new int[numberRows, numberColumns];
     for (int i = 0; i < tableArray.GetLength(0); i++)
     {
         for (int j = 0; j < tableArray.GetLength(1); j++)
@@ -43,14 +43,27 @@ int[,] GenerateArray(int numberRow, int numberColumn, int numberStart, int numbe
     return tableArray;
 }
 
-// Проверяем есть ли заданое число в массиве или нет
-
-
-int numberRow = Prompt("Введите значение количества строк массива: ");
-int numberColumn = Prompt("Введите значение количества столбцов массива: ");
+// Проверяем есть ли заданная позиция элемента в массиве или нет
+void GetPositionElement(int[,] tableArray, int numRow, int numColumn)
+{
+    // Проверим существует ли в массиве заданный номер строки и столбца 
+    if (((0 <= numRow) && (numRow < tableArray.GetLength(0))) && ((0 <= numColumn) && (numColumn < tableArray.GetLength(1)))) 
+    {
+        object elementArray = tableArray.GetValue(numRow, numColumn);
+        Console.WriteLine($"Элемент массива на позиции {numRow},{numColumn} = {elementArray}");
+    }
+    else Console.WriteLine($"Элемента массива на позиции {numRow},{numColumn} не существует!");
+}
+int numberRows = Prompt("Введите значение количества строк массива: ");
+int numberColumns = Prompt("Введите значение количества столбцов массива: ");
 int numberStart = Prompt("Введите начальное значение для заполнения массива: ");
 int numberEnd = Prompt("Введите конечное значение для заполнения массива: ");
 
-int[,] tableArray = GenerateArray(numberRow,numberColumn,numberStart,numberEnd);
+int[,] tableArray = GenerateArray(numberRows,numberColumns,numberStart,numberEnd);
 PrintArray(tableArray);
+
+int numRow = Prompt("Введите номер строки элемента массива: ");
+int numColumn = Prompt("Введите номер столбца элемента массива: ");
+
+GetPositionElement(tableArray, numRow, numColumn);
 
